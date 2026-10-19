@@ -28,7 +28,8 @@ Archivos y metadatos documentados en la fase de minería, conservados en `data/0
 - No combinar indicadores con unidades o definiciones distintas sin una transformación documentada.
 - No eliminar países o años silenciosamente.
 - Conservar trazabilidad hacia la fuente y registrar las decisiones de limpieza.
-- Validar unicidad de las claves previstas y comparar filas antes y después de cada unión.
+- Validar unicidad de las claves previstas y comparar filas antes y después de cada unión..........
+
 
 ## Entregables
 - Scripts y notebooks reproducibles.
