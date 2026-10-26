@@ -14,7 +14,7 @@ Investigar, seleccionar y obtener los datasets necesarios para estudiar la relac
 3. Registrar para cada indicador su nombre, definición, unidad, fuente, URL, frecuencia y cobertura temporal.
 4. Revisar cobertura por país y año, valores ausentes, duplicados y posibles cambios metodológicos.
 5. Documentar licencias, atribución y limitaciones de uso.
-6. Guardar una copia sin modificar de cada archivo original en `data/00_raw/`.
+6. Guardar una copia sin modificar de cada archivo original en `03_data/00_raw/`.
 7. Elaborar un inventario de fuentes y justificar la selección final.
 
 ## Variables candidatas
@@ -29,7 +29,7 @@ La lista es provisional: no se combinarán indicadores hasta comprobar que sus d
 
 ## Entregables
 - Inventario de fuentes e indicadores.
-- Archivos originales conservados en `data/00_raw/`.
+- Archivos originales conservados en `03_data/00_raw/`.
 - Notebook de exploración inicial.
 - Registro de cobertura, calidad, licencias y limitaciones.
 - Justificación de los indicadores seleccionados.

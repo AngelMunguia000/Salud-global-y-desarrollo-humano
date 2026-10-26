@@ -37,3 +37,17 @@ Dataset consolidado y validado generado en la fase de ingeniería.
 
 ## Criterios de salida
 Las principales tendencias, relaciones y limitaciones están documentadas, y existe una justificación clara para las variables que pasarán al modelado.
+
+## Organización de la fase
+
+- `scripts/`: funciones Python reutilizables para cargar el panel, resumir
+  indicadores y generar visualizaciones.
+- `notebooks/`: experimentación interactiva y registro de hallazgos.
+- `visualizaciones/`: gráficos generados por los scripts o notebooks.
+
+El notebook no duplica la lógica del análisis: importa las funciones de
+`scripts/exploracion.py`. Desde la raíz, el análisis base se puede ejecutar con:
+
+```bash
+python 04_analisis/scripts/exploracion.py
+```

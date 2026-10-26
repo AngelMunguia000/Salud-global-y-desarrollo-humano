@@ -1,16 +1,18 @@
 """Pruebas unitarias de las reglas de calidad del ETL."""
 
+import importlib
 from pathlib import Path
 
 import pandas as pd
 import pytest
 
-from ingenieria.etl.merge import merge_indicators
-from ingenieria.etl.transform import (
-    transform_countries,
-    transform_education,
-    transform_world_bank,
-)
+merge_indicators = importlib.import_module(
+    "02_ingenieria.etl.merge"
+).merge_indicators
+transform_module = importlib.import_module("02_ingenieria.etl.transform")
+transform_countries = transform_module.transform_countries
+transform_education = transform_module.transform_education
+transform_world_bank = transform_module.transform_world_bank
 
 
 @pytest.fixture
@@ -104,7 +106,7 @@ def processed_panel():
     """Carga el panel que genera ``make test`` antes de ejecutar pytest."""
     panel_path = (
         Path(__file__).resolve().parents[1]
-        / "data"
+        / "03_data"
         / "processed"
         / "panel_salud_global.parquet"
     )

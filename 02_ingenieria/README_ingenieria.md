@@ -4,7 +4,7 @@
 Transformar los archivos originales en un conjunto de datos integrado, consistente y reproducible para el análisis estadístico.
 
 ## Entradas
-Archivos y metadatos documentados en la fase de minería, conservados en `data/00_raw/`.
+Archivos y metadatos documentados en la fase de minería, conservados en `03_data/00_raw/`.
 
 ## Actividades
 1. Inspeccionar esquemas, tipos de datos, nombres de columnas y granularidad.
@@ -18,43 +18,30 @@ Archivos y metadatos documentados en la fase de minería, conservados en `data/0
 9. Exportar los resultados intermedios, limpios y consolidados a las carpetas correspondientes.
 
 ## Organización de datos
-- `data/00_raw/`: originales sin modificar.
-- `data/01_processed/`: datos transformados de forma inicial.
-- `data/02_clean/`: datos limpios y validados por fuente.
-- `data/03_consolidated/`: tabla integrada para análisis.
+- `03_data/00_raw/`: originales sin modificar.
+- `03_data/01_processed/`: datos transformados de forma inicial.
+- `03_data/02_clean/`: datos limpios y validados por fuente.
+- `03_data/03_consolidated/`: tabla integrada para análisis.
 
 ## Reglas de calidad
 - No confundir ausencia de dato con cero.
 - No combinar indicadores con unidades o definiciones distintas sin una transformación documentada.
 - No eliminar países o años silenciosamente.
 - Conservar trazabilidad hacia la fuente y registrar las decisiones de limpieza.
-- Validar unicidad de las claves previstas y comparar filas antes y después de cada unión..........
-
-
-## Entregables
-- Scripts y notebooks reproducibles.
-- Dataset consolidado por país y año.
-- Diccionario de datos con definiciones, unidades y procedencia.
-- Reporte de calidad, faltantes, duplicados y decisiones de transformación.
-
-## Criterios de salida
-El dataset consolidado tiene una estructura documentada, claves verificadas y limitaciones conocidas; puede utilizarse en análisis sin repetir manualmente la integración.
+- Validar unicidad de las claves previstas y comparar filas antes y después de cada unión.
 
 ## Ejecución local
 
 El ETL lee los indicadores WDI y la serie OWID de escolaridad, excluye agregados,
 integra las fuentes por `iso3` y `anio`, y produce el panel y el almacén local.
-Los originales no se modifican. Se prefiere `data/raw/` cuando existe; el layout
-actual de las fuentes bajo `data/` también está soportado.
+Los originales no se modifican.
 
 ```bash
 python -m pip install -r requirements.txt
 make etl
 make test
-make all
 ```
 
-`make etl` genera `data/processed/panel_salud_global.csv`,
-`data/processed/panel_salud_global.parquet`, manifiestos SHA-256 y
-`warehouse/salud.db` (DuckDB). `make test` vuelve a generar el panel y ejecuta
-las pruebas de calidad; `make all` ejecuta esa validación completa.
+`make etl` genera `03_data/processed/panel_salud_global.csv`,
+`03_data/processed/panel_salud_global.parquet`, manifiestos SHA-256 y
+`warehouse/salud.db` (DuckDB).

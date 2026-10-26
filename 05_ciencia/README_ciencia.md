@@ -35,5 +35,18 @@ Un residuo positivo indica que la esperanza de vida observada supera la estimada
 - Países con residuos positivos identificados mediante criterios explícitos y análisis de robustez.
 - Resultados reproducibles y limitaciones claramente explicadas.
 
-## Nota
-Esta fase no incluye por ahora una base de datos MongoDB ni despliegue de aplicaciones. La prioridad es un flujo de análisis reproducible.
+## Organización de la fase
+
+- `scripts/`: código Python reproducible para construir y evaluar modelos.
+- `notebooks/`: experimentación, comparación de especificaciones y visualización
+  de resultados.
+- `modelos/`: espacio para artefactos de modelos cuando se decida conservarlos.
+- `evaluacion/`: métricas, predicciones y residuos generados por los scripts.
+
+El modelo inicial está en `scripts/modelo_base.py`. Usa los últimos cinco años
+como conjunto de prueba temporal para evitar entrenar con observaciones futuras.
+Se ejecuta desde la raíz con:
+
+```bash
+python 05_ciencia/scripts/modelo_base.py
+```
