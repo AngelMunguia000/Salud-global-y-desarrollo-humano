@@ -5,15 +5,15 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from etl.extract import extract_sources
-from etl.load import (
+from ingenieria.etl.extract import extract_sources
+from ingenieria.etl.load import (
     load_warehouse,
     save_hashes_json,
     save_panel,
     write_hash_manifest,
 )
-from etl.merge import merge_indicators
-from etl.transform import transform_sources
+from ingenieria.etl.merge import merge_indicators
+from ingenieria.etl.transform import transform_sources
 
 
 def resolve_raw_dir(project_root: Path, requested: Path | None) -> Path:
