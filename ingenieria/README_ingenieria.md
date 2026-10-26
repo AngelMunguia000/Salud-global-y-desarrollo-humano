@@ -39,3 +39,22 @@ Archivos y metadatos documentados en la fase de minería, conservados en `data/0
 
 ## Criterios de salida
 El dataset consolidado tiene una estructura documentada, claves verificadas y limitaciones conocidas; puede utilizarse en análisis sin repetir manualmente la integración.
+
+## Ejecución local
+
+El ETL lee los indicadores WDI y la serie OWID de escolaridad, excluye agregados,
+integra las fuentes por `iso3` y `anio`, y produce el panel y el almacén local.
+Los originales no se modifican. Se prefiere `data/raw/` cuando existe; el layout
+actual de las fuentes bajo `data/` también está soportado.
+
+```bash
+python -m pip install -r requirements.txt
+make etl
+make test
+make all
+```
+
+`make etl` genera `data/processed/panel_salud_global.csv`,
+`data/processed/panel_salud_global.parquet`, manifiestos SHA-256 y
+`warehouse/salud.db` (DuckDB). `make test` vuelve a generar el panel y ejecuta
+las pruebas de calidad; `make all` ejecuta esa validación completa.

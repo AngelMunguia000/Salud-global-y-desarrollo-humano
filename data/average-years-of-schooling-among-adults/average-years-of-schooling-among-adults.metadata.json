@@ -1,0 +1,35 @@
+{
+  "chart": {
+    "title": "Average years of schooling among adults",
+    "subtitle": "Average number of years adults aged 25 and older have spent in formal education.",
+    "note": "Formal education is primary or higher.",
+    "citation": "UNDP, Human Development Report (2025)",
+    "originalChartUrl": "https://ourworldindata.org/grapher/years-of-schooling?v=1&csvType=full&useColumnShortNames=false&metric_type=average_years_schooling&level=all&sex=both",
+    "selection": [
+      "Germany",
+      "United States",
+      "Iran",
+      "Turkey"
+    ]
+  },
+  "columns": {
+    "Average years of schooling": {
+      "titleShort": "Average years of schooling",
+      "titleLong": "Average years of schooling - UNDP",
+      "descriptionShort": "Average number of years (excluding years spent repeating individual grades) adults over 25 years participated in formal education.",
+      "descriptionKey": "- This indicator shows the average number of years that adults in a country have spent in formal education.\n- It reflects the overall educational attainment of the population based on what they have already completed.\n- The calculation converts each person's highest completed education level into years - for example, someone who finished high school counts as having roughly 12 years of schooling, while someone who never attended school counts as 0 years.\n- The data comes from censuses and surveys of adults aged 25 and older, including only formal education starting from primary school.\n- This indicator captures how much schooling adults have accumulated over their lifetimes, showing the results of past investments in education systems.\n- Higher values indicate a population with stronger educational foundations, but the measure does not account for education quality or informal learning.\n- The data may not reflect recent progress in countries with infrequent surveys or outdated census information.\n- UNDP originally obtained this indicator from: Barro and Lee (2018), Eurostat (2024), ICF Macro Demographic and Health Surveys (various years), UNESCO Institute for Statistics (2024) and UNICEF Multiple Indicator Cluster Surveys (various years).",
+      "unit": "years",
+      "timespan": "1990-2023",
+      "type": "Numeric",
+      "owidVariableId": 1032446,
+      "shortName": "mys__sex_total",
+      "lastUpdated": "2025-05-07",
+      "nextUpdate": "2026-11-26",
+      "citationShort": "UNDP, Human Development Report (2025) – with minor processing by Our World in Data",
+      "citationLong": "UNDP, Human Development Report (2025) – with minor processing by Our World in Data. “Average years of schooling – UNDP” [dataset]. UNDP, Human Development Report, “Human Development Report” [original data].",
+      "fullMetadata": "https://api.ourworldindata.org/v1/indicators/1032446.metadata.json"
+    }
+  },
+  "dateDownloaded": "2026-10-26",
+  "activeFilters": {}
+}
