@@ -5,25 +5,25 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from ingenieria.etl.extract import extract_sources
-from ingenieria.etl.load import (
+from .extract import extract_sources
+from .load import (
     load_warehouse,
     save_hashes_json,
     save_panel,
     write_hash_manifest,
 )
-from ingenieria.etl.merge import merge_indicators
-from ingenieria.etl.transform import transform_sources
+from .merge import merge_indicators
+from .transform import transform_sources
 
 
 def resolve_raw_dir(project_root: Path, requested: Path | None) -> Path:
     """Selecciona data/raw cuando existe; admite el layout actual bajo data/."""
     if requested is not None:
         return requested if requested.is_absolute() else project_root / requested
-    raw_dir = project_root / "data" / "raw"
+    raw_dir = project_root / "03_data" / "raw"
     if raw_dir.is_dir():
         return raw_dir
-    return project_root / "data"
+    return project_root / "03_data"
 
 
 def run_pipeline(raw_dir: Path, output_dir: Path, warehouse_path: Path) -> None:
@@ -51,7 +51,7 @@ def run_pipeline(raw_dir: Path, output_dir: Path, warehouse_path: Path) -> None:
 
 def main() -> None:
     """Interfaz de línea de comandos del pipeline."""
-    project_root = Path(__file__).resolve().parents[1]
+    project_root = Path(__file__).resolve().parents[2]
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--raw-dir",
@@ -62,7 +62,7 @@ def main() -> None:
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=project_root / "data" / "processed",
+        default=project_root / "03_data" / "processed",
         help="Directorio de exportación.",
     )
     parser.add_argument(

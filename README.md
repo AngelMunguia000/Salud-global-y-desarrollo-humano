@@ -29,7 +29,7 @@ Proyecto de ciencia de datos para estudiar la relación entre el desarrollo soci
 Las variables e indicadores definitivos se elegirán después de revisar disponibilidad, definiciones, cobertura temporal y comparabilidad.
 
 ## Flujo de datos
-`Fuentes originales → data/00_raw → data/01_processed → data/02_clean → data/03_consolidated → análisis y modelos`
+`01_mineria → 02_ingenieria → 03_data → 04_analisis → 05_ciencia → 06_despliegue`
 
 Los datos originales se conservarán sin sobrescribir. Se documentarán las transformaciones, los indicadores, las unidades y las limitaciones.
 
@@ -37,11 +37,11 @@ Los datos originales se conservarán sin sobrescribir. Se documentarán las tran
 
 A continuación se describe la función de cada carpeta y de los documentos principales del proyecto:
 
-- `mineria/`: carpeta dedicada a la fase de adquisición y evaluación de fuentes. Aquí se registran las bases de datos candidatas, definiciones de indicadores y criterios para seleccionar los datasets relevantes.
-  - `README_mineria.md`: explica la metodología de minería, las fuentes potenciales, los indicadores preliminares y los entregables de esta etapa.
-  - `CONTRATO_PROYECTO_SALUD_GLOBAL.md`: documento de referencia con el acuerdo técnico, alcance y criterios del proyecto.
+- `01_mineria/`: carpeta dedicada a la fase de adquisición y evaluación de fuentes.
+  - `README_mineria.md`: metodología, fuentes, indicadores y entregables.
+  - `CONTRATO_PROYECTO_SALUD_GLOBAL.md`: acuerdo técnico, alcance y criterios.
 
-- `ingenieria/`: contiene la infraestructura del pipeline de ETL (extracción, transformación y carga). Aquí se preparan los datos para análisis estadístico.
+- `02_ingenieria/`: contiene la infraestructura del pipeline de ETL (extracción, transformación y carga).
   - `README_ingenieria.md`: describe la fase de ingeniería, las transformaciones esperadas y el flujo de validación del dataset.
   - `etl/`: scripts Python que ejecutan cada paso del flujo:
     - `extract.py`: descarga o lectura de fuentes originales.
@@ -51,13 +51,13 @@ A continuación se describe la función de cada carpeta y de los documentos prin
     - `pipeline.py`: orquestación del ETL completo.
     - `__init__.py`: marca el paquete Python.
 
-- `analisis/`: espacio para análisis exploratorio, estadística descriptiva y visualizaciones iniciales.
+- `04_analisis/`: espacio para análisis exploratorio, estadística descriptiva y visualizaciones iniciales.
   - `README_analisis.md`: define la etapa de análisis exploratorio, preguntas de investigación y entregables esperados.
 
-- `ciencia/`: carpeta para el modelado estadístico y la evaluación de resultados.
+- `05_ciencia/`: carpeta para el modelado estadístico y la evaluación de resultados.
   - `README_ciencia.md`: documenta el objetivo del modelado, variables candidatas, métricas de validación y criterios para analizar residuos.
 
-- `data/`: conserva los datos del proyecto organizados por etapas de procesamiento.
+- `03_data/`: conserva los datos del proyecto organizados por etapas de procesamiento.
   - `README_data.md`: describe la estructura de los datos (`00_raw`, `01_processed`, `02_clean`, `03_consolidated`) y las reglas de tratamiento.
   - `00_raw/`: copias originales sin modificar.
   - `01_processed/`: datos transformados iniciales.
@@ -77,6 +77,8 @@ A continuación se describe la función de cada carpeta y de los documentos prin
 
 - `warehouse/`: almacenamiento persistente para resultados analíticos o bases de datos locales.
   - `salud.db`: base de datos del proyecto para consultar el panel consolidado.
+
+- `06_despliegue/`: carpeta reservada para la aplicación final.
 
 - `requirements.txt`: dependencias del proyecto (bibliotecas de Python necesarias para análisis y ETL).
 - `Makefile`: automatiza tareas repetitivas como ejecución del ETL y validación de calidad.

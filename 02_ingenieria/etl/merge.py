@@ -6,7 +6,7 @@ import logging
 
 import pandas as pd
 
-from ingenieria.etl.extract import WORLD_BANK_INDICATORS
+from .extract import WORLD_BANK_INDICATORS
 
 KEY_COLUMNS = ["iso3", "anio"]
 LOGGER = logging.getLogger(__name__)

@@ -34,6 +34,3 @@ Un residuo positivo indica que la esperanza de vida observada supera la estimada
 - Efectos y asociaciones comunicados con unidades e incertidumbre cuando corresponda.
 - Países con residuos positivos identificados mediante criterios explícitos y análisis de robustez.
 - Resultados reproducibles y limitaciones claramente explicadas.
-
-## Nota
-Esta fase no incluye por ahora una base de datos MongoDB ni despliegue de aplicaciones. La prioridad es un flujo de análisis reproducible.

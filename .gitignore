@@ -1,0 +1,7 @@
+# Entorno virtual de Python
+.venv/
+
+# Artefactos locales de Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
