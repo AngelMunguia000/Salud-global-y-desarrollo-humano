@@ -5,8 +5,8 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from etl.merge import merge_indicators
-from etl.transform import (
+from ingenieria.etl.merge import merge_indicators
+from ingenieria.etl.transform import (
     transform_countries,
     transform_education,
     transform_world_bank,

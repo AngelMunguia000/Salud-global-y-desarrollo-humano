@@ -7,7 +7,7 @@ from typing import Any
 
 import pandas as pd
 
-from etl.extract import WORLD_BANK_INDICATORS
+from ingenieria.etl.extract import WORLD_BANK_INDICATORS
 
 ISO3_PATTERN = re.compile(r"^[A-Z]{3}$")
 YEAR_PATTERN = re.compile(r"^\d{4}$")
