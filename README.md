@@ -33,14 +33,54 @@ Las variables e indicadores definitivos se elegirán después de revisar disponi
 
 Los datos originales se conservarán sin sobrescribir. Se documentarán las transformaciones, los indicadores, las unidades y las limitaciones.
 
-## Estructura
-- `mineria/`: investigación y adquisición de datos.
-- `ingenieria/`: limpieza, integración y validación.
-- `analisis/`: análisis exploratorio y visualizaciones.
-- `ciencia/`: modelado, evaluación y análisis de residuos.
-- `data/`: datos organizados por etapa.
-- `docs/`: metodología, fuentes y diccionario de datos.
-- `reports/`: resultados y entregables finales.
+## Estructura del repositorio
+
+A continuación se describe la función de cada carpeta y de los documentos principales del proyecto:
+
+- `mineria/`: carpeta dedicada a la fase de adquisición y evaluación de fuentes. Aquí se registran las bases de datos candidatas, definiciones de indicadores y criterios para seleccionar los datasets relevantes.
+  - `README_mineria.md`: explica la metodología de minería, las fuentes potenciales, los indicadores preliminares y los entregables de esta etapa.
+  - `CONTRATO_PROYECTO_SALUD_GLOBAL.md`: documento de referencia con el acuerdo técnico, alcance y criterios del proyecto.
+
+- `ingenieria/`: contiene la infraestructura del pipeline de ETL (extracción, transformación y carga). Aquí se preparan los datos para análisis estadístico.
+  - `README_ingenieria.md`: describe la fase de ingeniería, las transformaciones esperadas y el flujo de validación del dataset.
+  - `etl/`: scripts Python que ejecutan cada paso del flujo:
+    - `extract.py`: descarga o lectura de fuentes originales.
+    - `transform.py`: limpieza, normalización y transformación de variables.
+    - `merge.py`: integración de múltiples fuentes por país y año.
+    - `load.py`: almacenamiento en archivos o bases de datos.
+    - `pipeline.py`: orquestación del ETL completo.
+    - `__init__.py`: marca el paquete Python.
+
+- `analisis/`: espacio para análisis exploratorio, estadística descriptiva y visualizaciones iniciales.
+  - `README_analisis.md`: define la etapa de análisis exploratorio, preguntas de investigación y entregables esperados.
+
+- `ciencia/`: carpeta para el modelado estadístico y la evaluación de resultados.
+  - `README_ciencia.md`: documenta el objetivo del modelado, variables candidatas, métricas de validación y criterios para analizar residuos.
+
+- `data/`: conserva los datos del proyecto organizados por etapas de procesamiento.
+  - `README_data.md`: describe la estructura de los datos (`00_raw`, `01_processed`, `02_clean`, `03_consolidated`) y las reglas de tratamiento.
+  - `00_raw/`: copias originales sin modificar.
+  - `01_processed/`: datos transformados iniciales.
+  - `02_clean/`: datos depurados y validados.
+  - `03_consolidated/`: archivo conjunto para análisis.
+  - `processed/`: dataset final generado para uso analítico (`panel_salud_global.csv`, `panel_salud_global.parquet`, `MANIFEST.md`, `source_hashes.json`).
+  - Subcarpetas como `API_.../`: archivos descargados de indicadores del Banco Mundial y sus metadatos.
+
+- `docs/`: documentación transversal del proyecto.
+  - `README_docs.md`: indica la documentación general del proyecto, fuentes, diccionario de datos y metodología.
+
+- `reports/`: resultados y entregables finales. Aquí no se guardan notebooks de trabajo, sino reportes, gráficos y resúmenes finales.
+  - `README.md`: explica el propósito de la carpeta y el tipo de material que debe incluirse.
+
+- `tests/`: pruebas automáticas del flujo de ETL y validación de calidad.
+  - `test_etl.py`: verifica que el proceso de extracción, transformación y consolidación funcione correctamente.
+
+- `warehouse/`: almacenamiento persistente para resultados analíticos o bases de datos locales.
+  - `salud.db`: base de datos del proyecto para consultar el panel consolidado.
+
+- `requirements.txt`: dependencias del proyecto (bibliotecas de Python necesarias para análisis y ETL).
+- `Makefile`: automatiza tareas repetitivas como ejecución del ETL y validación de calidad.
+- `README.md`: documento principal del proyecto, con descripción general, objetivos, fases y estructura del repositorio.
 
 ## Alcance y precauciones
 El análisis observacional permite estudiar asociaciones, pero no demuestra causalidad por sí solo. Las comparaciones entre países deberán considerar datos faltantes, cambios metodológicos, diferencias en definiciones y posibles sesgos de cobertura.
