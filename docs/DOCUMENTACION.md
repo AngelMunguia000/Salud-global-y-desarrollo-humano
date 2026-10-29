@@ -54,7 +54,7 @@ Metodología: **CRISP-DM** (detalle en `docs/metodologia.md`).
 | matplotlib | Figuras del análisis y del informe |
 | python-docx, python-pptx | Generación automática del informe Word y la presentación |
 | Streamlit, Plotly | Aplicación web interactiva |
-| pytest | Pruebas automáticas (37 pruebas) |
+| pytest | Pruebas automáticas (39 pruebas) |
 | Make | Automatización de las fases (`make all`) |
 | Git, GitHub | Control de versiones y trabajo en ramas |
 | Streamlit Community Cloud | Hospedaje de la aplicación web |
@@ -176,19 +176,24 @@ Convierte los archivos originales en un panel limpio de una fila por país y añ
 
 ### 5.6 Aplicación web (`06_despliegue/`)
 
-`app.py` es una aplicación Streamlit de cinco páginas, ordenadas según la rúbrica de presentación:
+Aplicación Streamlit organizada en capas, con una vista por fase del proyecto:
 
-| Página | Contenido |
-|---|---|
-| 1 · Problema y pregunta | Pregunta central, preguntas de investigación y cifras clave |
-| 2 · Los datos | Fuentes, periodo de estudio y mapa de cobertura |
-| 3 · Preparación | Decisiones del ETL con su justificación; R² lineal vs. logaritmo |
-| 4 · Análisis y hallazgos | Explorador interactivo por año y país, modelos, validación, sobre-desempeño y convergencia |
-| 5 · Conclusiones | Hipótesis, recomendación y limitaciones |
+| Archivo | Capa | Qué hace |
+|---|---|---|
+| `app.py` | Entrada | Configura la página y arma el menú de navegación entre vistas |
+| `components.py` | Interfaz | Componentes reutilizables: encabezado de fase, caja "¿Por qué?" y figuras |
+| `services/pipeline.py` | Datos | Carga del panel, tablas, resúmenes, hashes y conteo de pruebas, con caché |
+| `views/home.py` | Vista | Inicio: pregunta central, cifras clave y respuesta corta |
+| `views/mineria.py` | Vista | Fuentes, justificación de los datos y cobertura por región |
+| `views/ingenieria.py` | Vista | Pipeline ETL, decisiones de limpieza, panel y almacén DuckDB |
+| `views/analisis.py` | Vista | Explorador interactivo, log vs. niveles, correlaciones y convergencia |
+| `views/ciencia.py` | Vista | Modelos M0–M6, validación, sobre-desempeño, hipótesis y conclusiones |
+| `views/mlops.py` | Vista | Pipeline reproducible, versionado de datos (SHA-256), pruebas, monitoreo y despliegue |
 
 Características:
 - Solo **lee** resultados ya generados; no entrena modelos, por eso carga rápido.
-- Usa `st.cache_data` para leer cada archivo una sola vez.
+- Las vistas no leen archivos: todo pasa por `services/pipeline.py`, que usa `st.cache_data` para leer cada archivo una sola vez.
+- Se ejecuta en local con `python -m streamlit run 06_despliegue/app.py` (http://localhost:8501).
 - Cada gráfica incluye una caja **"¿Por qué?"** que justifica el dato o el método.
 - Reutiliza `common/panel.py` y `common/style.py`.
 
@@ -250,14 +255,14 @@ Todos los comandos se ejecutan desde la raíz del repositorio.
 
 ## 8. Pruebas automáticas
 
-37 pruebas con pytest (`python -m pytest -q`), todas aprobadas:
+39 pruebas con pytest (`python -m pytest -q`), todas aprobadas:
 
 | Archivo | Pruebas | Qué verifica |
 |---|---|---|
 | `tests/test_etl.py` | 7 | Llave única país-año, exclusión de agregados, rango 20–95 años y rechazo de duplicados, con datos sintéticos y con el panel real |
 | `tests/test_ols.py` | 9 | Coeficientes iguales a scikit-learn, errores HC3, errores agrupados, VIF, Breusch–Pagan, RESET y Cook |
 | `tests/test_analisis_modelos.py` | 16 | Muestra del modelo, signos de M3, log mejor que niveles, criterio de sobre-desempeño, convergencia, consultas SQL, hipótesis y existencia de entregables |
-| `tests/test_app.py` | 5 | Cada página de la aplicación web se ejecuta sin errores |
+| `tests/test_app.py` | 7 | Cada una de las 6 vistas y la app completa se ejecutan sin errores |
 
 ## 9. Despliegue de la aplicación web
 
