@@ -266,38 +266,11 @@ def pagina_conclusiones() -> None:
     )
 
 
-# ---------------------------------------------------------------- Extra: preguntas
-def pagina_preguntas() -> None:
-    st.title("Preguntas para la defensa")
-    st.caption("Banco de práctica para el equipo.")
-    preguntas = {
-        "¿Por qué no imputaron los datos faltantes del gasto en salud?":
-            "Imputar series de gasto de 200+ países introduciría datos sintéticos. Preferimos 4,339 observaciones "
-            "reales país-año (2000–2023), donde la OMS-GHED tiene datos armonizados.",
-        "Hay colinealidad alta entre PIB y gasto (VIF 8–9), ¿cómo afecta?":
-            "Es esperable: los países ricos gastan más. Por eso los coeficientes individuales son inestables; "
-            "lo reconocemos como limitación y hablamos de asociaciones conjuntas, no efectos aislados.",
-        "¿Por qué usar gradient boosting (M6) si el lineal ya tenía R² alto?":
-            "Como benchmark no paramétrico. Su RMSE menor (3.87 vs 4.09) confirma interacciones no lineales "
-            "y regionales que el modelo lineal no captura del todo.",
-        "¿Por qué el umbral de +1σ y 70 % de los años?":
-            "Para filtrar ruido y exigir estabilidad: solo cuentan países que superan lo esperado de forma persistente.",
-        "¿Por qué errores estándar agrupados por país?":
-            "Las observaciones de un mismo país en distintos años están correlacionadas; sin agrupar, "
-            "los errores serían demasiado pequeños y los p-valores engañosos.",
-    }
-    for pregunta, respuesta in preguntas.items():
-        with st.expander(pregunta):
-            st.markdown(respuesta)
-
-
 if __name__ == "__main__":  # `streamlit run` ejecuta el script como __main__; las pruebas lo importan
     st.navigation([
         st.Page(pagina_problema, title="1 · Problema y pregunta", icon="❓", url_path="problema", default=True),
         st.Page(pagina_datos, title="2 · Los datos", icon="🗂️", url_path="datos"),
         st.Page(pagina_preparacion, title="3 · Preparación", icon="🧹", url_path="preparacion"),
         st.Page(pagina_analisis, title="4 · Análisis y hallazgos", icon="📈", url_path="analisis"),
-        st.Page(pagina_conclusiones, title="5 · Conclusiones", icon="✅", url_path="conclusiones"),
-        st.Page(pagina_preguntas, title="Preguntas", icon="🎤", url_path="preguntas"),
-    ]).run()
+        st.Page(pagina_conclusiones, title="5 · Conclusiones", icon="✅", url_path="conclusiones"),    ]).run()
     st.sidebar.caption(FUENTE)

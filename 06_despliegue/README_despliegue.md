@@ -28,8 +28,6 @@ Se abre en http://localhost:8501. Prueba automática: `python -m pytest tests/te
 | 3 · Preparación | 6–10 | 2. Justificación del análisis (25) | Decisiones del ETL con su razón y alternativa descartada; R² niveles vs. logaritmo |
 | 4 · Análisis y hallazgos | 9–16 | 2 y 3. Calidad del análisis (20) | Explorador interactivo, modelos M0–M6, validación, países de sobre-desempeño, convergencia |
 | 5 · Conclusiones | 17–20 | 4. Conclusiones y limitaciones (15) | Matriz de hipótesis, recomendación accionable, limitaciones |
-| Preguntas | — | 5. Respuesta a preguntas (10) | Banco de preguntas para practicar la defensa |
-
 ## Datos que usa
 
 | Archivo | Página |
