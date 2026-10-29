@@ -101,6 +101,9 @@ make app       # aplicación web en http://localhost:8501
 ```
 Todo se regenera desde los datos originales de `03_data/` (verificados con SHA-256).
 
+## Aplicación web
+**https://salud-global-equipo4.streamlit.app** — presentación interactiva del proyecto (código en `06_despliegue/`).
+
 ## Resultados principales
 - **Informe final:** `reports/informe_final.md` (y `.docx`); presentación en `reports/presentacion_final.pptx`.
 - **Panel:** 217 países, 1960–2024; modelos sobre 4,339 país-año (186 países, 2000–2023).
@@ -108,4 +111,4 @@ Todo se regenera desde los datos originales de `03_data/` (verificados con SHA-2
 - Resultados numéricos: `04_analisis/tablas/` y `05_ciencia/resultados/`. Documentación: `docs/`.
 
 ## Estado
-Proyecto **completo** en sus cinco fases (minería, ingeniería, análisis, ciencia de datos y reporte), con aplicación web en `06_despliegue/`. Pendientes: publicar la app en Streamlit Cloud (ver `06_despliegue/README_despliegue.md`) y firmas del contrato (`01_mineria/CONTRATO_PROYECTO_SALUD_GLOBAL.md`, §9 y §13).
+Proyecto **completo** en sus cinco fases (minería, ingeniería, análisis, ciencia de datos y reporte), con aplicación web publicada en Streamlit Cloud (`06_despliegue/`). Pendiente: firmas del contrato (`01_mineria/CONTRATO_PROYECTO_SALUD_GLOBAL.md`, §9 y §13).

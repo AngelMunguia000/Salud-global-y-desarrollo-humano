@@ -1,0 +1,3 @@
+# Tema claro fijo: la paleta de regiones (common/style.py) usa negro para Norteamérica.
+[theme]
+base = "light"

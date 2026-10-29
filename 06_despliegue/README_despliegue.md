@@ -1,5 +1,7 @@
 # 06_despliegue — Aplicación web (Streamlit)
 
+**App publicada:** https://salud-global-equipo4.streamlit.app (rama `feature/despliegue-streamlit`).
+
 Aplicación interactiva que presenta el proyecto siguiendo los cinco momentos de la rúbrica de presentación.
 Cada gráfica incluye una caja **"¿Por qué?"** que justifica el dato, la variable o el método, porque los
 criterios 1 y 2 de la rúbrica (50 puntos) dependen de esa justificación.
@@ -42,15 +44,16 @@ Si se regeneran los resultados (`make all`), la app muestra las cifras nuevas si
 ## Despliegue en Streamlit Community Cloud
 
 Requisito: el código debe estar en GitHub (rama `feature/despliegue-streamlit` o `main`) y la cuenta que despliega
-debe tener acceso al repositorio `GabrielIMarquezRp/Salud-global-y-desarrollo-humano`.
+debe ser **administradora** del repositorio `AngelMunguia000/Salud-global-y-desarrollo-humano` (en repos personales,
+solo el dueño lo es; los colaboradores no pueden desplegar). El tema claro se fija en `.streamlit/config.toml`.
 
 1. Entrar a https://share.streamlit.io e iniciar sesión con GitHub.
 2. **Create app → Deploy a public app from GitHub**.
 3. Llenar:
-   - **Repository:** `GabrielIMarquezRp/Salud-global-y-desarrollo-humano`
+   - **Repository:** `AngelMunguia000/Salud-global-y-desarrollo-humano`
    - **Branch:** `feature/despliegue-streamlit` (o `main` después del merge)
    - **Main file path:** `06_despliegue/app.py`
-   - **App URL:** por ejemplo `salud-global-equipo4`
+   - **App URL:** `salud-global-equipo4`
 4. En **Advanced settings**, elegir Python 3.10 o superior.
 5. **Deploy**. Streamlit Cloud instala `06_despliegue/requirements.txt` (el de la carpeta de la app tiene
    prioridad sobre el de la raíz) y publica la app.
