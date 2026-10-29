@@ -3,6 +3,7 @@
 Esta carpeta contiene documentación transversal del proyecto.
 
 Archivos previstos:
+- `DOCUMENTACION.md` (y `.docx` para entregar): documentación técnica completa — arquitectura, módulos, modelo de datos, instalación, pruebas y despliegue.
 - `fuentes.md`: fuentes, enlaces, licencias, cobertura y fecha de consulta.
 - `diccionario_datos.md`: variables, definiciones, unidades, claves y procedencia.
 - `metodologia.md`: criterios de selección, limpieza, integración y modelado.
