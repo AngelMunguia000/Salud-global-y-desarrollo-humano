@@ -9,3 +9,6 @@ Archivos previstos:
 - `decisiones.md`: decisiones técnicas y razones detrás de ellas.
 
 Mantener esta documentación actualizada cuando cambien las fuentes, definiciones, transformaciones o criterios de evaluación.
+
+## Estado
+Los cuatro documentos previstos existen: `fuentes.md`, `diccionario_datos.md`, `metodologia.md` y `decisiones.md`.

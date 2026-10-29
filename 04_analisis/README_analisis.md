@@ -51,3 +51,8 @@ El notebook no duplica la lógica del análisis: importa las funciones de
 ```bash
 python 04_analisis/scripts/exploracion.py
 ```
+
+## Estado y contenido (implementado)
+- `scripts/eda_completo.py` (`make analisis`): cobertura, descriptivos, correlaciones (Pearson y Spearman), ajuste lineal vs. logarítmico por año, series regionales, σ- y β-convergencia.
+- Salidas: `tablas/*.csv`, `tablas/resultados_eda.json` y 9 figuras en `visualizaciones/` (escala logarítmica, series, convergencia).
+- `notebooks/02_eda_completo.ipynb`: recorrido interactivo (la lógica vive en el script).

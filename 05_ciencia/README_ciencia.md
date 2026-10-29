@@ -50,3 +50,9 @@ Se ejecuta desde la raíz con:
 ```bash
 python 05_ciencia/scripts/modelo_base.py
 ```
+
+## Estado y contenido (implementado)
+- `scripts/modelos.py` (`make modelos`): modelos M0–M5 (MCO con errores agrupados por país), M6 (gradient boosting), diagnósticos (VIF, Breusch–Pagan, RESET, Jarque–Bera, Cook), validación temporal y por países, criterio de sobre-desempeño con robustez (M3 y *leave-one-country-out*) y veredicto de H1–H4.
+- Salidas: `resultados/*.csv|json` y 5 figuras en `figuras/`.
+- `scripts/modelo_base.py` y `evaluacion/` son el modelo base inicial (con imputación por mediana); quedan como referencia y están superados por `modelos.py`.
+- Metodología y decisiones: `docs/metodologia.md`, `docs/decisiones.md`.

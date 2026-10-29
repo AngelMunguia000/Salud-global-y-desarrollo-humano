@@ -75,10 +75,15 @@ A continuación se describe la función de cada carpeta y de los documentos prin
 - `tests/`: pruebas automáticas del flujo de ETL y validación de calidad.
   - `test_etl.py`: verifica que el proceso de extracción, transformación y consolidación funcione correctamente.
 
+- `common/`: módulos compartidos (carga del panel, OLS con errores robustos y diagnósticos, estilo gráfico).
+
 - `warehouse/`: almacenamiento persistente para resultados analíticos o bases de datos locales.
   - `salud.db`: base de datos del proyecto para consultar el panel consolidado.
 
-- `06_despliegue/`: carpeta reservada para la aplicación final.
+- `06_despliegue/`: aplicación web en Streamlit que presenta el proyecto siguiendo la rúbrica de presentación.
+  - `app.py`: la aplicación (solo lee resultados ya generados).
+  - `requirements.txt`: dependencias mínimas para Streamlit Cloud.
+  - `README_despliegue.md`: cómo ejecutarla en local y cómo desplegarla en Streamlit Cloud.
 
 - `requirements.txt`: dependencias del proyecto (bibliotecas de Python necesarias para análisis y ETL).
 - `Makefile`: automatiza tareas repetitivas como ejecución del ETL y validación de calidad.
@@ -87,5 +92,20 @@ A continuación se describe la función de cada carpeta y de los documentos prin
 ## Alcance y precauciones
 El análisis observacional permite estudiar asociaciones, pero no demuestra causalidad por sí solo. Las comparaciones entre países deberán considerar datos faltantes, cambios metodológicos, diferencias en definiciones y posibles sesgos de cobertura.
 
+## Ejecución completa
+```bash
+make install   # dependencias
+make all       # ETL → EDA → modelos → informe/presentación → pruebas
+make help      # lista de comandos (etl, analisis, modelos, informe, consultas, test, app)
+make app       # aplicación web en http://localhost:8501
+```
+Todo se regenera desde los datos originales de `03_data/` (verificados con SHA-256).
+
+## Resultados principales
+- **Informe final:** `reports/informe_final.md` (y `.docx`); presentación en `reports/presentacion_final.pptx`.
+- **Panel:** 217 países, 1960–2024; modelos sobre 4,339 país-año (186 países, 2000–2023).
+- **Hallazgos:** el ingreso se asocia con más esperanza de vida con rendimientos decrecientes (R² aj. 0.47 → 0.68 al usar logaritmo); gasto en salud y escolaridad aportan de forma frágil; 8 países superan de forma robusta lo que predice su ingreso; las brechas entre países y regiones convergen.
+- Resultados numéricos: `04_analisis/tablas/` y `05_ciencia/resultados/`. Documentación: `docs/`.
+
 ## Estado
-Proyecto en fase inicial de organización y diseño del pipeline. Los indicadores, el periodo de estudio y los modelos se concretarán conforme se evalúen las fuentes.
+Proyecto **completo** en sus cinco fases (minería, ingeniería, análisis, ciencia de datos y reporte), con aplicación web en `06_despliegue/`. Pendientes: publicar la app en Streamlit Cloud (ver `06_despliegue/README_despliegue.md`) y firmas del contrato (`01_mineria/CONTRATO_PROYECTO_SALUD_GLOBAL.md`, §9 y §13).

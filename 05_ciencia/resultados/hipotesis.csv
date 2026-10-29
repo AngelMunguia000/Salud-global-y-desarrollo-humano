@@ -1,0 +1,5 @@
+hipotesis,enunciado,veredicto,evidencia
+H1,La relación esperanza de vida–PIB es cóncava (ln supera a niveles),Respaldada,R² aj. M0=0.465 vs M1=0.680; RESET M0 p=4.3e-268
+H2,Gasto en salud y escolaridad aportan más allá del ingreso,Parcialmente respaldada,"M3 (agrupado): p(ln gasto)=0.0012, p(escolaridad)=0.0078; con efectos fijos M4: p=0.02/0.78; M5: p=0.42/0.51"
+H3,Existen países de sobre-desempeño robustos,Respaldada,13 bajo M1; 8 también bajo M3; 8 robustos (también leave-one-country-out)
+H4,La brecha de esperanza de vida converge (1990–2023),Respaldada,σ 1990=9.88 → 2023=7.12; β=-0.0112 (p=5.5e-28)
